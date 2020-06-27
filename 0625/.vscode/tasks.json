@@ -9,7 +9,12 @@
             "command": "python",
             "args": [
                 "${fileBasename}"
-            ]
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

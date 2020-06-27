@@ -20,3 +20,22 @@ def smooth(img, filter_size):
             img_out[i][j] = sum // num
 
     return img_out
+
+
+def smooth_weighted(img): 
+    filter = [[0.1, 0.1, 0.1],
+              [0.1, 0.2, 0.1],
+              [0.1, 0.1, 0.1]]
+
+    img_out = np.zeros_like(img)
+    h, w = img.shape
+
+    for i in range(1, h - 1):
+        for j in range(1, w - 1):
+            sum = 0.0 
+            for u in range(-1, 2): 
+                for v in range(-1, 2): 
+                    sum += img[i + u][j + v] * filter[u][v]
+            img_out[i][j] = int(sum)
+    
+    return img_out
