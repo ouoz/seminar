@@ -32,10 +32,10 @@ plt.imshow(img_in)
 """
 # 移動平均フィルタ
 
-img_out = idou_heikin.smooth(img_in, 11)
+img_ave = idou_heikin.smooth(img_in, 11)
 
 plt.subplot(1, 5, 2)
-plt.imshow(img_out)
+plt.imshow(img_ave)
 plt.show()
 """
 
@@ -47,18 +47,18 @@ plt.imshow(img_noised)
 
 """
 #重み付き移動平均フィルタ
-img_out = idou_heikin.smooth_weighted(img = img_in)
+img_ave_w = idou_heikin.smooth_weighted(img = img_in)
 
 plt.subplot(1, 5, 3)
-plt.imshow(img_out)
+plt.imshow(img_ave_w)
 """
 
 """
 #メディアンフィルタ
-img_out = median_filter.smooth(img = img_noised, filter_size = 3)
+img_med = median_filter.smooth(img = img_noised, filter_size = 3)
 
 plt.subplot(1, 5, 3)
-plt.imshow(img_out)
+plt.imshow(img_med)
 """
 
 

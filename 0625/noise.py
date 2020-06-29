@@ -38,4 +38,3 @@ def noise_spike(img, number = 1000, noise_range = 32):
         img_out[y][x] = pix
     
     return img_out
-
