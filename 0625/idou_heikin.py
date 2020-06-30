@@ -35,7 +35,7 @@ def smooth_weighted(img):
             sum = 0.0 
             for u in range(-1, 2): 
                 for v in range(-1, 2): 
-                    sum += img[i + u][j + v] * filter[u][v]
+                    sum += img[i + u][j + v] * filter[u + 1][v + 1]
             img_out[i][j] = int(sum)
     
     return img_out
