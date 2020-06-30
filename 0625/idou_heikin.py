@@ -9,7 +9,7 @@ def smooth(img, filter_size):
     h, w = img.shape
     num = filter_size ** 2
     k = filter_size // 2
-    img_out = np.zeros_like(img)
+    img_out = np.zeros_like(img).astype(np.float)
 
     for i in range(k, h - k):
         for j in range(k, w - k):
@@ -19,6 +19,8 @@ def smooth(img, filter_size):
                     sum += img[i + u][j + v]
             img_out[i][j] = sum // num
 
+    img_out = img_out.astype(np.uint8)
+
     return img_out
 
 
@@ -27,7 +29,7 @@ def smooth_weighted(img):
               [0.1, 0.2, 0.1],
               [0.1, 0.1, 0.1]]
 
-    img_out = np.zeros_like(img)
+    img_out = np.zeros_like(img).astype(np.float)
     h, w = img.shape
 
     for i in range(1, h - 1):
@@ -38,4 +40,6 @@ def smooth_weighted(img):
                     sum += img[i + u][j + v] * filter[u + 1][v + 1]
             img_out[i][j] = int(sum)
     
+    img_out = img_out.astype(np.uint8)
+
     return img_out

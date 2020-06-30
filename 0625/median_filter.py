@@ -3,7 +3,7 @@ import numpy as np
 
 
 def smooth(img, filter_size): 
-    img_out = np.zeros_like(img)
+    img_out = np.zeros_like(img).astype(np.float)
     h, w = img.shape
     k = filter_size // 2
 
@@ -17,4 +17,6 @@ def smooth(img, filter_size):
             window.sort()
             img_out[i][j] = window[(filter_size) ** 2 // 2]
     
+    img_out = img_out.astype(np.uint8)
+
     return img_out

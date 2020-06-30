@@ -6,8 +6,8 @@ import copy
 
 
 def noise(img, noise_range = 32): 
-    img_out = np.zeros_like(img)
-    h, w = img.shape
+    img_out = np.zeros_like(img).astype(np.float)
+    h, w = img_out.shape
     
     for i in range(h):
         for j in range(w): 
@@ -19,11 +19,13 @@ def noise(img, noise_range = 32):
                 pix = 0
             img_out[i][j] = pix
 
+    img_out = img_out.astype(np.uint8)
+
     return img_out
 
 
 def noise_spike(img, number = 1000, noise_range = 32):
-    img_out = copy.deepcopy(img)
+    img_out = copy.deepcopy(img).astype(np.float)
     h, w = img.shape
     
     for _ in range(number): 
@@ -37,4 +39,6 @@ def noise_spike(img, number = 1000, noise_range = 32):
             pix = 0
         img_out[y][x] = pix
     
+    img_out = img_out.astype(np.uint8)
+
     return img_out

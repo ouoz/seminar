@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 def zero_cross(img): 
-    img_out = np.zeros_like(img)
+    img_out = np.zeros_like(img).astype(np.float)
 
     h, w = img.shape
 
@@ -27,11 +27,13 @@ def zero_cross(img):
                 if (img[i][j] - 128) * (img[i][j - 1] - 128) < 0: 
                     img_out[i][j] = 255
     
+    img_out = img_out.astype(np.uint8)
+
     return img_out
 
 
 def laplacian_of_gaussian(img, var, amp): 
-    img_out = np.zeros_like(img)
+    img_out = np.zeros_like(img).astype(np.float)
     
     h, w = img.shape
 
@@ -70,6 +72,8 @@ def laplacian_of_gaussian(img, var, amp):
             if d > 255: 
                 d = 255
             img_out[i][j] = int(d)
+    
+    img_out = img_out.astype(np.uint8)
     
     return img_out
 

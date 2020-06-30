@@ -53,7 +53,7 @@ def smooth(img):
     
     h, w = img.shape
 
-    img_out = np.zeros_like(img)
+    img_out = np.zeros_like(img).astype(np.float)
 
     p = [[0] * 9 for _ in range(9)]
     
@@ -64,4 +64,6 @@ def smooth(img):
                     p[u][v] = img[i + paty[u][v]][j + patx[u][v]]
             img_out[i][j] = average_minv(p)
     
+    img_out = img_out.astype(np.uint8)
+
     return img_out
